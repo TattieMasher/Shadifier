@@ -22,7 +22,10 @@ try {
         $stmt = $pdo->prepare("INSERT INTO shady_urls (original_url, shady_url, expiry_datetime) VALUES (?, ?, ?)");
         $stmt->execute([$originalURL, $shadyURL, $expiryDate]);
     
+        echo "<br><br>";
         echo "Shady URL: <a href='$shadyURL'>$shadyURL</a>";
+        echo "<br><br>";
+        echo "Expiry date: $expiryDate";
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
