@@ -24,8 +24,8 @@ $shadyElements = [
 function generateShadyURL() {
     global $shadyElements; // Use the global keyword to access the external variable
     $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!$()*";
-    $shadiness = 4; // You can adjust the length as needed
-    $length = 11; // You can adjust the length as needed
+    $shadiness = 4; // Number of shadyElements (above) in generated URL
+    $length = 11;  // Length of random characters (as above) at end of generated URL
 
     $shadyURL = '';
     for ($i = 0; $i < $shadiness; $i++) {

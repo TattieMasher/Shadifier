@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<?php function extractPathAfterBaseURL($urlRequested, $baseUrl) {
+    $pathWithoutBaseURL = str_replace($baseUrl, '', $urlRequested);
+
+    $pathSegments = explode('/', $pathWithoutBaseURL);
+
+    $pathSegments = array_filter($pathSegments);
+
+    $lastSegment = end($pathSegments);
+
+    return $lastSegment;
+}
+?>
+
 <html>
     <head>
         <title>Shady Link Builder</title>
@@ -6,16 +20,19 @@
     </head>
     <body>
         <div id="">
-            <h1>Shady URL Shortener</h1>
-            <form id="url-form" method="POST">
-                <label for="url">Enter your URL:</label>
-                <input name="url" id="url" required>
-                <label for="shade-level">Shadiness:</label>
-                <input type="number" name="shade-level" min="2" max="10">
-                <label for="expiry-date">Expiry (in days):</label>
-                <input type="number" name="expiry-date" min="1" max="30">
-                <button id="submit-url" type="submit">Create Shady Link!</button>
-            </form>
+            <?php 
+            $urlRequested = $_SERVER['REQUEST_URI'];
+            $pathSegment = trim(extractPathAfterBaseURL($urlRequested, $baseUrl));
+
+            echo "<h2>REQUESTED: $urlRequested</h2>
+            <br>
+            <h3>Segment: $pathSegment</h3>
+            Path Segment: $pathSegment";
+
+            if($pathSegment === "Shadifier") {
+                include('components/url-form.php');
+            }
+            ?>
 
             <div id="link-container">
                 <?php

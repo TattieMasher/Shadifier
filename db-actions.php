@@ -5,6 +5,9 @@ $dbname = 'u908894077_URL_Shittifier';
 $username = 'u908894077_URL_Admin';
 $password = 'U%%~UE]&?HfSBx9';
 
+// General settings
+$baseUrl = "URL%20Shortener/Shadifier/";
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
