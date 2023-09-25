@@ -1,8 +1,12 @@
 body {
-    font-family: 'Comic Sans MS', cursive;
+    font-family: 'Comic Sans MS', 'Comic Neue', cursive;
     font-size: 22px;
-    height: 100vh;
-    width: 100vw;
+    background: radial-gradient(#e66465, #9198e5);
+    margin: 0; /* Remove margin to ensure full viewport coverage */
+    padding: 0; /* Remove padding to ensure full viewport coverage */
+    display: flex; /* Use flex to center the content vertically */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 #url-form {
@@ -18,9 +22,60 @@ body {
     align-items: center;
 }
 
+#landing-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("Prince2.png");
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-size: contain;
+    background-position: bottom left; /* Display from the bottom left corner */
+}
+
+#banner {
+    margin: 0 auto 0 auto;
+    text-align: center;
+    background-color: #e66465;
+}
+
+#center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50vh;
+}
+
+#center-button button {
+    font-size: 32px;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 3vw 9vw;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#success {
+    background-color: #4CAF50;
+}
+
+#failure {
+    background-color: #e66465;
+}
+
+#shady-link {
+    border: none;
+    cursor: pointer;    
+}
+
 #url-form label,
 #url-form input {
     margin-bottom: 10px;
+}
+
+#url-form button {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 #link-container {
@@ -31,4 +86,10 @@ body {
 
 #submit-url {
     grid-column: span 2;
+}
+
+@media (max-width: 500px) {
+    #center-button {
+        margin-top: 0px;
+    }
 }

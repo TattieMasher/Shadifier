@@ -12,8 +12,6 @@ $shadyElements = [
     "not-clickbait",
     "VIP",
     "once-in-a-lifetime",
-    "classified",
-    "top-secret",
     "exclusive",
     "lottery",
     "pyramid-scheme",

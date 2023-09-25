@@ -1,4 +1,4 @@
-<h1>Shady URL Shortener</h1>
+<h1>Shady URL Generator</h1>
 <form id="url-form" method="POST">
     <label for="url">Enter your URL:</label>
     <input name="url" id="url" required>
