@@ -44,8 +44,8 @@ function retrieveShadyUrls($pdo, $shadyUrl) {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$shadyUrl]);
 
-                // Echo the query with bound parameters
-                $stmt->debugDumpParams();
+        // Echo the query with bound parameters
+        echo "<br>"; $stmt->debugDumpParams();
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

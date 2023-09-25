@@ -28,12 +28,11 @@ include('link-builder.php');
                 $shadyUrl = retrieveShadyUrls($pdo, $pathSegment); // Fetch a single original_url
                 
                 if ($shadyUrl !== false) {
-                    echo "<h1>Shady URLs:</h1>";
                     $originalURL = urldecode($shadyUrl);
                     
                     // Display the single shady URL
-                    echo "Original URL: $originalURL<br>";
-                    echo "Shady URL: $shadyURL<br>";
+                    echo "<h4>Original URL: $originalURL<br>";
+                    echo "Shady URL: $pathSegment<br></h4>";
                 } else {
                     echo "<h1>No Shady URLs found.</h1>
                     <p>SQL Query: $query</p>
@@ -41,8 +40,6 @@ include('link-builder.php');
                 }
             }
             ?>
-            <div id="link-container">
-            </div>
         </div>
     </body>
 </html>

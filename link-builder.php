@@ -24,19 +24,20 @@ $shadyElements = [
 function generateShadyURL() {
     global $shadyElements; // Use the global keyword to access the external variable
     $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!$()*";
-    $shadiness = 4; // Number of shadyElements (above) in generated URL
-    $length = 11;  // Length of random characters (as above) at end of generated URL
+    $shadiness = 10; // Number of shadyElements (above) in generated URL
+    $length = 11;  // Length of random characters (as above) at end of generated URL - not currently used
 
     $shadyURL = '';
     for ($i = 0; $i < $shadiness; $i++) {
         $shadyURL .= $shadyElements[rand(0,count($shadyElements))];
-        $shadyURL .= "!";
+        $shadyURL .= "!";   // Shady element delimiter
     }
 
+    /* No random characters at the end
     for ($i = 0; $i < $length; $i++) {
         $shadyURL .= $characters[rand(0, strlen($characters) - 1)];
     }
-
+    */
     return "$shadyURL";
 }
 
