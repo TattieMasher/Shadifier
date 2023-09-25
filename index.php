@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-
-<?php function extractPathAfterBaseURL($urlRequested, $baseUrl) {
-    $pathWithoutBaseURL = str_replace($baseUrl, '', $urlRequested);
-
-    $pathSegments = explode('/', $pathWithoutBaseURL);
-
-    $pathSegments = array_filter($pathSegments);
-
-    $lastSegment = end($pathSegments);
-
-    return $lastSegment;
-}
+<?php // Include functions to create link and extract end of client request URL
+include('link-builder.php');
 ?>
 
 <html>
@@ -19,26 +9,39 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <div id="">
+    <?php // Include file for storing db connection settings, running database actions and storing results
+        include('db-actions.php');
+                ?>
+        <div id="app-container">
             <?php 
             $urlRequested = $_SERVER['REQUEST_URI'];
             $pathSegment = trim(extractPathAfterBaseURL($urlRequested, $baseUrl));
 
             echo "<h2>REQUESTED: $urlRequested</h2>
             <br>
-            <h3>Segment: $pathSegment</h3>
-            Path Segment: $pathSegment";
+            <h3>Segment: $pathSegment</h3>";
 
-            if($pathSegment === "Shadifier") {
+            if ($pathSegment === "Shadifier" || $pathSegment === "") {
                 include('components/url-form.php');
+            } else {
+                // Retrieve shady URLs from the database
+                $shadyUrl = retrieveShadyUrls($pdo, $pathSegment); // Fetch a single original_url
+                
+                if ($shadyUrl !== false) {
+                    echo "<h1>Shady URLs:</h1>";
+                    $originalURL = urldecode($shadyUrl);
+                    
+                    // Display the single shady URL
+                    echo "Original URL: $originalURL<br>";
+                    echo "Shady URL: $shadyURL<br>";
+                } else {
+                    echo "<h1>No Shady URLs found.</h1>
+                    <p>SQL Query: $query</p>
+                    <p>Path Segment: $pathSegment</p>";
+                }
             }
             ?>
-
             <div id="link-container">
-                <?php
-                include('link-builder.php');
-                include('db-actions.php');
-                ?>
             </div>
         </div>
     </body>

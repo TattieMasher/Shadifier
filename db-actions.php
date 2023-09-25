@@ -33,5 +33,30 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+?>
 
+<?php
+function retrieveShadyUrls($pdo, $shadyUrl) {
+    try {
+        $query = "SELECT original_url FROM shady_urls WHERE shady_url = ? AND expiry_datetime > CURRENT_TIMESTAMP";
+        echo "<br>SQL Query: $query"; // Debugging
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$shadyUrl]);
+
+                // Echo the query with bound parameters
+                $stmt->debugDumpParams();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result['original_url'];
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
 ?>

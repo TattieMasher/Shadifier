@@ -37,6 +37,15 @@ function generateShadyURL() {
         $shadyURL .= $characters[rand(0, strlen($characters) - 1)];
     }
 
-    return "http://shady-links.website.com/$shadyURL";
+    return "$shadyURL";
+}
+
+function extractPathAfterBaseURL($urlRequested, $baseUrl) {
+    $pathWithoutBaseURL = str_replace($baseUrl, '', $urlRequested);
+    $pathSegments = explode('/', $pathWithoutBaseURL);
+    $pathSegments = array_filter($pathSegments);
+    $lastSegment = end($pathSegments);
+
+    return $lastSegment;
 }
 ?>
