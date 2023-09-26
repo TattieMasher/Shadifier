@@ -2,11 +2,14 @@ body {
     font-family: 'Comic Sans MS', 'Comic Neue', cursive;
     font-size: 22px;
     background: radial-gradient(#e66465, #9198e5);
-    margin: 0; /* Remove margin to ensure full viewport coverage */
-    padding: 0; /* Remove padding to ensure full viewport coverage */
-    display: flex; /* Use flex to center the content vertically */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #url-form {
@@ -20,15 +23,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 #landing-page {
     width: 100vw;
     height: 100vh;
     background-image: url("Prince2.png");
-    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-repeat: no-repeat;
     background-size: contain;
-    background-position: bottom left; /* Display from the bottom left corner */
+    background-position: bottom left;
 }
 
 #banner {

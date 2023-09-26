@@ -10,9 +10,10 @@ include('link-builder.php');
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet"> 
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
     </head>
     <body>
-        <?php // Include file for storing db connection settings, running database actions and storing results
+        <?php // Include file for storing db connection settings, running database actions, and storing results
             include('db-actions.php');
         ?>
         <div id="app-container">
@@ -21,7 +22,7 @@ include('link-builder.php');
             $pathSegment = trim(extractPathAfterBaseURL($urlRequested, $baseUrl));
 
             if ($pathSegment === "Shadifier" || $pathSegment === "") {
-                include('components/url-form.php');
+                include('components/url-form.php'); 
             } else {
                 include('components/landing-page.php');
             }
@@ -48,6 +49,40 @@ include('link-builder.php');
                     echo "Shady URL: <a href='$shadyURL'>$shadyURL</a>";
                     echo "<br><br>";
                     echo "Expiry date: " . date('Y-m-d', strtotime($expiryDate));
+                }
+                ?>
+
+                <?php
+                // Check if the pathSegment condition is met before running confetti
+                if ($pathSegment !== "Shadifier" && $pathSegment !== "") {
+                ?>
+                <script>
+                    const end = Date.now() + 2 * 1000;
+                    const colors = ["#07c520", "#fdbb00"];
+
+                    (function frame() {
+                        confetti({
+                            particleCount: 1,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0 },
+                            colors: colors,
+                        });
+
+                        confetti({
+                            particleCount: 1,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1 },
+                            colors: colors,
+                        });
+
+                        if (Date.now() < end) {
+                            requestAnimationFrame(frame);
+                        }
+                    })();
+                </script>
+                <?php
                 }
                 ?>
             </div>
