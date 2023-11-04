@@ -12,10 +12,23 @@ body {
     align-items: center;
 }
 
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #url-form {
     width: 75%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+#link-details {
+    width: 75%;
+}
+
+#link-details a {
+    overflow-wrap: break-word;
 }
 
 #app-container {
@@ -95,5 +108,11 @@ body {
 @media (max-width: 500px) {
     #center-button {
         margin-top: 0px;
+    }
+}
+
+@media (max-width: 560px) {
+    #landing-page {
+        background-image: url("Prince small.png");
     }
 }
