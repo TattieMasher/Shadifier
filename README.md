@@ -1,4 +1,4 @@
-# Shadifier
+# Shady Link Generator
 This project is a fun take on the traditional URL shortener, designed to create purposefully shady-looking links for humorous purposes. Unlike typical URL shorteners, this adds a twist by generating URLs that purposefully appear suspicious, reminiscent of internet scams or clickbait. Hopefully you too enjoy the use of everyone's favourite font; COMIC SANS.
 
 [See it in action and try for yourself!](https://shadeee.click/)
